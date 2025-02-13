@@ -3,15 +3,9 @@
 </p>
 
 <div align="center">
-  <a href="https://github.com/kenhendricks00/chess-move-analyzer/releases">
-    <img src="https://img.shields.io/github/v/release/kenhendricks00/chess-move-analyzer?label=Latest%20Release&color=green" alt="Latest Release">
-  </a>
-  <a href="https://github.com/kenhendricks00/chess-move-analyzer/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/kenhendricks00/chess-move-analyzer" alt="License">
-  </a>
-  <a href="https://github.com/kenhendricks00/chess-move-analyzer/stargazers">
-    <img src="https://img.shields.io/github/stars/kenhendricks00/chess-move-analyzer?style=social" alt="GitHub Stars">
-  </a>
+  <a href="https://github.com/kenhendricks00/chess-move-analyzer/releases"><img src="https://img.shields.io/github/v/release/kenhendricks00/chess-move-analyzer?label=Latest%20Release&color=green" alt="Latest Release"></a>
+  <a href="https://github.com/kenhendricks00/chess-move-analyzer/blob/main/LICENSE"><img src="https://img.shields.io/github/license/kenhendricks00/chess-move-analyzer" alt="License"></a>
+  <a href="https://github.com/kenhendricks00/chess-move-analyzer/stargazers"><img src="https://img.shields.io/github/stars/kenhendricks00/chess-move-analyzer?style=social" alt="GitHub Stars"></a>
 </div>
 
 <h2><div align="center"><b>Chess.com Move Analyzer: Real-time Stockfish Analysis for Your Games</b></div></h2>
