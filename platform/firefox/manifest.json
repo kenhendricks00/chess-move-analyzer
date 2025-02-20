@@ -16,7 +16,7 @@
     "browser_action": {
       "default_popup": "pub/popup.html",
       "default_icon": {
-        "48": "ext_icon_144.png"
+        "48": "res/ext_icon_144.png"
       }
     },
     "content_scripts": [
