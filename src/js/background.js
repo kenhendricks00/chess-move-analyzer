@@ -1,4 +1,4 @@
-let stockfish = new Worker("stockfish/stockfish.wasm.js");
+let stockfish = new Worker("../stockfish/stockfish.wasm.js");
 const fenCache = new Map();
 
 stockfish.postMessage("uci"); // Pre-initialize
