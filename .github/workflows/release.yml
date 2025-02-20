@@ -45,7 +45,7 @@ jobs:
         id: release_notes
         run: |
           VERSION=${{ env.VERSION }}
-          echo "## Release $VERSION" > release_notes.md
+          echo "## $VERSION" > release_notes.md
           echo "" >> release_notes.md
           if [[ "$VERSION" != "dev-version" ]]; then
             awk "/^## \\[$VERSION\\]/, /^## \\[/" CHANGELOG.md >> release_notes.md || cat RELEASE.HEAD.md >> release_notes.md
