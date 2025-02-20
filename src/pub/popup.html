@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Analyzer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chess Analyzer</h1>
+      <div class="color-toggle-container">
+        <span class="color-toggle-label">Playing as</span>
+        <div class="color-toggle" id="colorToggle" data-selected="white">
+          <div class="color-slider"></div>
+          <div class="color-option selected" data-color="white">
+            <span class="piece-icon white-king"></span>
+            White
+          </div>
+          <div class="color-option" data-color="black">
+            <span class="piece-icon black-king"></span>
+            Black
+          </div>
+        </div>
+      </div>
+      <button id="analyze">Auto Analyze: OFF</button>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
