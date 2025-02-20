@@ -8,14 +8,14 @@
   <a href="https://github.com/kenhendricks00/chess-move-analyzer/stargazers"><img src="https://img.shields.io/github/stars/kenhendricks00/chess-move-analyzer?style=social" alt="GitHub Stars"></a>
 </div>
 
-<h2><div align="center"><b>Chess.com Move Analyzer: Real-time Stockfish Analysis for Your Games</b></div></h2>
+<h2><div align="center"><b>Chess Move Analyzer: Real-time Stockfish Analysis for Your Games</b></div></h2>
 
-# ♟️ What is Chess.com Move Analyzer?
+# ♟️ What is Chess Move Analyzer?
 
-**Chess.com Move Analyzer** is a browser extension that enhances your Chess.com experience by providing real-time Stockfish analysis of your games. Get instant feedback on the best moves available, analyze your position, and improve your chess strategy with professional-grade insights.
+**Chess Move Analyzer** is a browser extension that enhances your Chess.com experience by providing real-time Stockfish analysis of your games. Get instant feedback on the best moves available, analyze your position, and improve your chess strategy with professional-grade insights.
 
 <p align="center">
-  <img src="assets/demo.png" alt="Chess.com Move Analyzer Demo" style="width: 600px">
+  <img src="assets/demo.png" alt="Chess Move Analyzer Demo" style="width: 600px">
 </p>
 
 # ⭐ Key Features
