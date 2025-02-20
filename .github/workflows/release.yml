@@ -1,0 +1,87 @@
+name: Release Extensions
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
+
+permissions:
+  contents: write  # Required to write contents and create releases
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y zip jq
+
+      # Step to get the version, or use a default if no tag exists (manual trigger)
+      - name: Get Version from Tag or Default
+        id: get_version
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/}
+            echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          else
+            echo "No tag found, using default version"
+            echo "VERSION=dev-version" >> $GITHUB_ENV
+          fi
+
+      - name: Assemble Release Notes
+        id: release_notes
+        run: |
+          VERSION=${{ env.VERSION }}
+          echo "## Release $VERSION" > release_notes.md
+          echo "" >> release_notes.md
+          if [[ "$VERSION" != "dev-version" ]]; then
+            awk "/^## \\[$VERSION\\]/, /^## \\[/" CHANGELOG.md >> release_notes.md || cat RELEASE.HEAD.md >> release_notes.md
+          else
+            echo "Manual run, no release notes extracted from CHANGELOG.md" >> release_notes.md
+            cat RELEASE.HEAD.md >> release_notes.md
+          fi
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.VERSION }}
+          release_name: Release ${{ env.VERSION }}
+          body_path: release_notes.md
+          draft: false
+          prerelease: false
+
+      - name: Build Firefox Extension
+        run: |
+          mkdir -p dist/firefox
+          cp -r src/* dist/firefox/
+          cp platform/firefox/manifest.json dist/firefox/manifest.json
+          cd dist/firefox
+          zip -r ../chess-move-analyzer_${{ env.VERSION }}.firefox.zip ./*
+          cd ..
+          mv chess-move-analyzer_${{ env.VERSION }}.firefox.zip chess-move-analyzer_${{ env.VERSION }}.firefox.xpi
+
+      - name: Upload Firefox Extension
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/chess-move-analyzer_${{ env.VERSION }}.firefox.xpi
+          asset_name: chess-move-analyzer_${{ env.VERSION }}.firefox.xpi
+          asset_content_type: application/x-xpinstall
