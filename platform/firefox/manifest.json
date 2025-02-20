@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "Chess Analyzer for Firefox",
+    "name": "Chess Move Analyzer",
     "version": "1.0",
     "description": "Analyze and solve your Chess.com games with real-time suggestions.",
     "permissions": [
@@ -10,19 +10,19 @@
       "*://www.chess.com/*"
     ],
     "background": {
-      "scripts": ["background.js"],
+      "scripts": ["js/background.js"],
       "persistent": true
     },
     "browser_action": {
-      "default_popup": "popup.html",
+      "default_popup": "pub/popup.html",
       "default_icon": {
-        "48": "icon.png"
+        "48": "ext_icon_144.png"
       }
     },
     "content_scripts": [
       {
         "matches": ["*://www.chess.com/*"],
-        "js": ["content.js"]
+        "js": ["js/content.js"]
       }
     ]
   }
